@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>部屋一覧</title>
+</head>
+<body>
+    <h2>部屋一覧</h2>
+    <table>
+        <tr><th>id</th><th>roomName</th><th>capacity</th></tr>
+        <tr th:each="room : ${roomList}">
+            <td th:text="${room.roomId}"></td>
+            <td th:text="${room.roomName}"></td>
+            <td th:text="${room.capacity}"></td>
+             <td>
+                <a th:href="@{'/edit/' + ${room.roomId}}"><button>編集</button></a>
+            </td>
+        </tr>
+    </table>
+    <a href="/form">登録画面</a></body>
+    <a href="/equipment">備品一覧画面</a></body>
+</html>
