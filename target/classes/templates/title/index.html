@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>記載例</title>
+	<link href="/css/style.css" rel="stylesheet" />
+</head>
+<body>
+    <a href="/">トップページ</a></body>
+    <a th:href="@{'/discription/index/' + ${discription.notification.id}}">戻る</a></body>
+    <h2 th:text="${discription.name} + ' 記載例'"></h2>
+    <div th:if="${discription.code}" th:text="${discription.code}"></div>
+    <table class="discription_table">
+        <tr th:each="title : ${discription.titles}">
+            <td th:text="${title.titleName}"></td>
+            <td>
+                <a th:href="@{'/title/' + ${discription.id} + '/edit/' + ${title.id}}"><button>編集</button></a>
+            </td>
+            <td>
+	            <th:block th:each="note : ${title.notes}">
+	            	<span th:text="${note.text}"></span>
+	            	<a th:href="@{'/note/' + ${title.id} + '/edit/' + ${note.id}}"><button>編集</button></a>
+	            	<br>
+	            </th:block>
+	            <a th:href="@{'/note/' + ${title.id} + '/form'}"><button>項目登録</button></a>
+            </td>
+        </tr>
+    </table>
+    <a th:href="@{'/title/' + ${discription.id} + '/form'}"><button>タイトル登録</button></a>
+</html>

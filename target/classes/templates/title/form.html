@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>登録画面</title>
+</head>
+<body>
+    <h2 class="heading">タイトル登録画面</h2>
+    <form method="post" th:action="@{'/title/' + ${title.discription.id} + '/form'}" th:object="${title}">
+        <label for="titleName">タイトル</label>
+        <input type="text" id="titleName" name="titleName" th:value="*{titleName}"><br>
+        <div th:if="${#fields.hasErrors('titleName')}" th:errors="*(titleName}"></div>
+        <button type="submit">登録</button>
+    </form>
+    <a href="/">トップページ</a>
+</body>
+</html>

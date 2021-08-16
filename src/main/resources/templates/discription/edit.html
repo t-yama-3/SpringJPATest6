@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>編集画面</title>
+</head>
+<body>
+    <h2 class="heading">記載例編集画面</h2>
+    <form method="post" th:action="@{'/discription/' + ${discription.notification.id} + '/edit/' + ${discription.id}}" th:object="${discription}">
+        <label for="name">記載例名</label>
+        <input type="text" id="name" name="name" th:value="*{name}"><br>
+        <div th:if="${#fields.hasErrors('name')}" th:errors="*(name}"></div>
+        <label for="code">コード</label>
+        <input type="text" id="code" name="code" th:value="*{code}"><br>
+        <div th:if="${#fields.hasErrors('code')}" th:errors="*(code}"></div>
+        <button type="submit">登録</button>
+    </form>
+    <a href="/">トップページ</a><br>
+    <a th:href="@{'/discription/index/' + ${discription.notification.id}}">記載例一覧</a>
+</body>
+</html>

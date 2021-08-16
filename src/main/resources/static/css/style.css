@@ -1,0 +1,7 @@
+.discription_table td {
+	vertical-align: top;
+}
+
+.discription_name {
+	max-width: 300px;
+}

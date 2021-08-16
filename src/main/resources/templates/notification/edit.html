@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>編集画面</title>
+</head>
+<body>
+    <h2 class="heading">届出種別編集画面</h2>
+    <form method="post" th:action="@{'/notification/edit/' + ${notification.id}}" th:object="${notification}">
+        <label for="subject">届出名</label>
+        <input type="text" id="subject" name="subject" th:value="*{subject}"><br>
+        <div th:if="${#fields.hasErrors('subject')}" th:errors="*(subject}"></div>
+        <button type="submit">登録</button>
+    </form>
+    <a href="/">トップページ</a>
+</body>
+</html>

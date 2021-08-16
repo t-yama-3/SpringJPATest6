@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>記載例一覧</title>
+	<link href="/css/style.css" rel="stylesheet" />
+</head>
+<body>
+    <a href="/">トップページ</a></body>
+    <h2 th:text="${notification.subject} + ' 記載例一覧'"></h2>
+    <table class="discription_table">
+        <tr><th>CODE</th><th>記載例名称</th>
+        <tr th:each="discription : ${notification.discriptions}">
+            <td th:text="${discription.code}"></td>
+            <td th:text="${discription.name}" class="discription_name"></td>
+            <td>
+                <a th:href="@{'/title/index/' + ${discription.id}}"><button>詳細</button></a>
+            </td>
+            <td>
+                <a th:href="@{'/discription/' + ${notification.id} + '/edit/' + ${discription.id}}"><button>編集</button></a>
+            </td>
+        </tr>
+    </table>
+    <a th:href="@{'/discription/' + ${notification.id} + '/form'}"><button>記載例名登録</button></a>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Top Page</title>
+</head>
+<body>
+    <h2>Top Page</h2>
+    <table>
+        <tr><th>id</th><th>届出名称</th>
+        <tr th:each="notification : ${notificationList}">
+            <td th:text="${notification.id}"></td>
+            <td th:text="${notification.subject}"></td>
+            <td>
+                <a th:href="@{'/discription/index/' + ${notification.id}}"><button>詳細</button></a>
+            </td>
+            <td>
+                <a th:href="@{'/notification/edit/' + ${notification.id}}"><button>編集</button></a>
+            </td>
+        </tr>
+    </table>
+    <a href="/notification/form">届出種別登録</a></body>
+</html>
